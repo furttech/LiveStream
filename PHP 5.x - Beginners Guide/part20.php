@@ -81,6 +81,24 @@
 
     }
 
+    table.stable {
+
+        width: 100%;
+        height: auto;
+
+        position: inherit;
+
+        padding: 10px;
+
+        border-spacing: 5px;
+
+    }
+
+    .tdbtn{
+        display: block;
+        margin: auto;
+    }
+
 </style><?php
 /**
  * User: Furt_Tech
@@ -120,8 +138,8 @@ echo "<p class='p5'>Luckily, over the years a few clever developers came up with
 
 // begin output html
 echo '<div style="background: #f1f1f1;">
-             <h5>Examples:</h5>
-                <p style="text-align: left;">';
+             <h5>Select Examples:</h5>
+                <div style="text-align: center;">';
 
 ///
 ///
@@ -133,7 +151,7 @@ echo '<div style="background: #f1f1f1;">
 
 
 /*
-    PHP has three seperate form in which a data base
+    PHP has three separate form in which a data base
     communication is fashioned
     1. Object Oriented MySQLi)
     2. PDO style
@@ -141,116 +159,24 @@ echo '<div style="background: #f1f1f1;">
     Both allow communication but differ in syntax
 */
 
+echo '<table class="stable">
+        <tr>
+            <th>Object Based MSQLi</th>
+            <th>PDO Style MySQL</th>
+            <th>Procedural MySQL</th>
+        </tr>
+        <tr>
+            <td><button class="tdbtn" id="objp">Load</button></td>
+            <td><button class="tdbtn" id="pdop">Load</button></td>
+            <td><button class="tdbtn" id="prop">Load</button></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div id="exp"></div>
+            </td>  
+        </tr>              
+     </table>';
 
-///* Object Oriented MySQLi)
-
-// a few values are needed to connect
-$myServer = "localhost"; // could also be an ip
-$username = "username";
-$password = "taco1234";
-
-// using the above values we can create
-// a connection object that provide the
-// sql database communication
-$dbConnector = new mysqli($myServer,$username,$password);
-
-// use a try catch block to handle exceptions
-try {
-
-    // run a check to verify the crdetials are correct
-    if (mysqli_connect_error()) {
-        // throw an error when connection fails
-        throw new Exception("Failed dbConnector", 1);
-    } else {
-
-        error_log("DB connection success!");
-    }
-
-} catch (Exception $e) {
-    // handle exception and alter program flow
-    //you suck and you messed up your credentials
-}
-
-
-// remember to close the connection
-$dbConnector->close();
-
-
-/// PDO style
-
-
-// place creation inside of try-catch for exception handling
-try {
-
-    // again using our values from above and a few new ones
-    // create connection object using PDO formatting
-    $PDOconnector = new PDO("mysql:$myServer;dbname=furtDB",$username,$password);
-
-    // note: this PDO connection requires an existing db name
-
-    $PDOconnector -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    error_log("DB Connection Success");
-
-} catch (PDOException $e) {
-    // handle exception and alter program flow
-    // you suck and your creds are wrong
-    error_log($e->getMessage());
-}
-
-
-
-// after using a db connection it must be closed
-$PDOconnector=null;
-
-
-///**  Procedural Method
-
-$ProConnector = mysqli_connect($myServer,$username,$password);
-
-// for error checking we add a statment
-if (!$ProConnector) {
-    error_log("DB connection failed");
-}
-
-// now the data base is ready for communications
-// remember to close th econnection when done!
-mysql_close($ProConnector);
-
-// databases can be used to store data nicly
-// below shows and example of making a INSERT query
-// this allows data to be placed into the DB from PHP
-
-$myServer = "localhost"; // could also be an ip
-$username = "username";
-$password = "taco1234";
-$dbname = "myDB";
-
-// like befor we create a new connection this time include
-// the database name as the last argument
-
-$dbConnector = new mysqli($myServer,$username,$password,$dbname);
-
-    // run a check to verify the crdetials are correct
-if (mysqli_connect_error()) {
-    // throw an error when connection fails
-    throw new Exception("Failed dbConnector", 1);
-} else {
-
-    error_log("DB connection success!");
-}
-
-
-// the most direct and unsafe way to insert into a data base
-// this offers no protection against msql injection (covered later)
-$query = "INSERT INTO random ( num1 , num2 , num3 ) VALUES ('1','2','4')";
-
-// execture the query and check for error
-if ($dbConnector->query($sql) === TRUE) {
-    error_log("Query Success");
-} else {
-    error_log("Query Failed");
-}
 
 
 // more to come in later video
@@ -272,8 +198,69 @@ echo "</div><br><br></nt><div>
 <button class='brght' id='blast'>Last</button>
 </div></body>";
 
+
+
 // java script for nav footer
-echo "<script type='text/javascript'>
+echo "<script
+	src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+	type='text/javascript'></script>
+	<script type='text/javascript'>
+
+// example button js
+
+document.getElementById('objp').onclick = function(){
+
+      $.ajax({
+            type: 'POST',               
+            processData: false, 
+            contentType: false,  
+            cache: false,
+            url: './sql/objectSQL.php',
+            success: function(data){
+    
+                document.getElementById('exp').innerHTML = data;
+   
+            }
+       });
+    
+}
+
+document.getElementById('pdop').onclick = function(){
+
+          $.ajax({
+            type: 'POST',               
+            processData: false, 
+            contentType: false,  
+            cache: false,
+            url: './sql/pdoSQL.php',
+            success: function(data){
+    
+                document.getElementById('exp').innerHTML = data;
+   
+            }
+       });
+    
+    
+}
+
+document.getElementById('prop').onclick = function(){
+
+          $.ajax({
+            type: 'POST',               
+            processData: false, 
+            contentType: false,  
+            cache: false,
+            url: './sql/procSQL.php',
+            success: function(data){
+    
+                document.getElementById('exp').innerHTML = data;
+   
+            }
+       });
+       
+}
+
+// nav button js
 
 document.getElementById('bnext').onclick = function(){
 

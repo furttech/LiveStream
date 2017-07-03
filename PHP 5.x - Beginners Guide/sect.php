@@ -58,14 +58,20 @@
 
     table.part{
 
-        position: relative;
-        width: auto;
-        height: auto;
-        left: 50%;
-        margin-top: 10em;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
 
+        height: auto;
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    div.dpart{
+        display: block;
+        position: inherit;
+        margin-bottom: 5%;
+        text-align: center;
+        border: 1px solid green;
+        padding: 5px;
     }
 
 </style><?php
@@ -80,7 +86,7 @@ echo "<!DOCTYPE html>
 
 echo "<header><h1 class='pageHead'>PHP - The Basics :: An Overview of Syntax and Technique</h1></header>";
 
-echo "<br><br><table class='part'>";
+echo "<br><br><div class='dpart'><table class='part'>";
 
     $pages = array("Some Basics",
         "Some Variables",
@@ -101,7 +107,8 @@ echo "<br><br><table class='part'>";
         "Filters",
         "Error Handling",
         "Exception Handling",
-        "Using MySql");
+        "Using MySql",
+        "Using Classes");
 
     $index = 1;
     foreach($pages as $value){
@@ -114,7 +121,7 @@ echo "<br><br><table class='part'>";
         $index++;
     }
 
-echo '</table>';
+echo '</table></div>';
 
 
 // end html code section

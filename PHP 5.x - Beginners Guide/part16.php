@@ -157,11 +157,11 @@ echo "Our Unset Session ['value1'] : <br>".$_SESSION['value1']."<br>";
 //session_unset();
 
 
-// to dystory session
+// to destroy session
 //session_destroy();
 
 //destroy a single session value
-session_destroy("value1");
+session_destroy($_SESSION['value1']);
 
 // finnaly we try one more time to access the now destroyed sesssion variable
 echo "Our Unset Destroyed ['value1'] : <br>".$_SESSION['value1']."<br>";
