@@ -62,7 +62,7 @@
         width: auto;
         height: auto;
         left: 50%;
-        margin-top: 8em;
+        margin-top: 10em;
         margin-right: -50%;
         transform: translate(-50%, -50%);
 
@@ -94,7 +94,14 @@ echo "<br><br><table class='part'>";
         "Loops - ForEach",
         "Working w/ Files",
         "More Working w/ Files",
-        "Including Files");
+        "Including Files",
+        "Uploading Files",
+        "Using Cookies",
+        "Understanding Sessions",
+        "Filters",
+        "Error Handling",
+        "Exception Handling",
+        "Using MySql");
 
     $index = 1;
     foreach($pages as $value){

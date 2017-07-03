@@ -4,7 +4,7 @@
         width: 99%;
         border: 1px solid lightgray;
         padding : 5px;
-        position: relative
+        position: relative;
     }
 
     .pageHead{
@@ -108,7 +108,7 @@ echo '<p class="p2"> Including other files is easier than one might think.</p>
                 when the file is not found.<br><br>
                 On the other hand require[filename] will halt the script preventing<br>
                 potentially unknown behalvior or serious faults in scripts that need<br>
-                the contents of the included file.<br><br>';
+                the contents of the included file.<br><br></p>';
 
 // ----  Include or Require external files ----- //
 
@@ -150,7 +150,7 @@ echo '<h4> An important part of including a file is the directory its in! </h4>
                  <br></p>';
 
 
-echo "</div><div>
+echo "<div>
         <button class='bleft' id='bnext'>Next</button>
         <button class='btuts' id='btuts'>Tutorial Index</button>
         <button class='brght' id='blast'>Last</button>

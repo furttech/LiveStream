@@ -4,7 +4,7 @@
         width: 99%;
         border: 1px solid lightgray;
         padding : 5px;
-        position: relative
+        position: relative;
     }
 
     .pageHead{
@@ -67,6 +67,19 @@
         transform: translate(-50%, -50%);
     }
 
+    textarea.ta{
+
+        height: auto;
+        width : auto;
+
+        position: inherit;
+        overflow: hidden;
+        resize: none;
+
+
+        -ms-overflow-style: none
+
+    }
 
 </style><?php
 /**
@@ -88,27 +101,35 @@ echo "<h1 class='pageHead'>PHP - The Basics :: Part 14 - Uploading Files</h1>";
 echo "<h3 class='p1'> Uploading Files to a server is a delicate process:</h3>";
 
 echo '<p class="p4">When a user uploads a file to your server it opens a potentially large security hole<br>
-                    making it important to use the </p>';
+                    making it important to use the proper techniques for user interactions!</p>';
 
 // ---------- accessing files with php  ----------- //
 
-echo '<p class="p2"> Including other files is easier than one might think.</p>
-                <h4> Remember Your File Must Exist to include it! </h4>
-                <p class="p2">Assume a file exists call user.php <br>
-                and we want to include this file for use <br>
-                this gives us access to contents/declarations - ect<br>
-                </p>
-                <h4>Two primary methods exist: </h4>
-                <p class="p2"><br>
-                <i> include [filename]</i><br>
-                <i> require [filename]</i><br>
+echo '<p class="p2"> The first step is providing the user with an area to upload the file on the page.</p>
+                <h4> Create the HTML form needed to submit the file info: </h4>
+                <br>
+                <div class="p2">
+                <textarea rows="8" cols="110" class="ta" readonly>    
+                    <form action="ourFile.php" method="POST">
+                        <h3>Select a file:</h3>
+                        <input type="file" name="fileUpName" id="fileUpName">
+                        <input type="submit" value="Upload Image" name="sub">
+                    </form>
+                </textarea>
+                </div>
+                <h4>Two interaction methods exist in this form: </h4>
+                <div class="p5"><br>
+                <textarea rows="4" cols="110" class="ta" readonly>
+                
+                <var> <input type="file"> </var><br>
+                <var> <input type="submit"> </var><br>
+                </textarea>
                 <br><br>
-                The biggest difference is in how the file inclusion is handled,<br>
-                with an include[filename] a script will not halt<br>
-                when the file is not found.<br><br>
-                On the other hand require[filename] will halt the script preventing<br>
-                potentially unknown behalvior or serious faults in scripts that need<br>
-                the contents of the included file.<br><br>';
+                The input file tag will act as the interfacing point which opens a local<br>
+                file browser on the users system.<br>
+                The submit button acts like a normal form submission button.<br>
+                Once the user clicks the submit button the file is past onto the server.<br>
+                </div>';
 
 // ----  Include or Require external files ----- //
 
@@ -117,100 +138,54 @@ echo '<h4>Here we include the user.php file:</h4>';
 // begin output html
 echo '<div style="background: #f1f1f1;">
              <h5>Example:</h5>
-                <p style="text-align: left;">';
+                <p style="text-align: center;">';
 
-// ----- file uploads ------- //
+///
+///
+///
+///
+////////// ----------- FILE UPLOAD FORM : CODE   ----------- \\\\\\\\\\
 
 // ussually coupled with some HTML form submission
-/*
-    <form action="ourFile.php" method="POST">
+echo '<form action="ourFileUpLoader.php" method="POST" enctype="multipart/form-data">
 
         <h3>Select a file:</h3>
         <input type="file" name="fileUpName" id="fileUpName" >
-        <input type='submit' value="Upload Image" name="sub">
+        <input type="submit" value="Upload File" name="sub">
 
-    </form>
-*/
-
-
-/*
-// these <input> values can now be passed to php
-// on submission the files are passed by POST
-// php can grab the file with $_FILES[] attribute
-
-// first a dir must be provided to store file
-$ourDir = "./uploadsFile";
-
-// create our target file path and name from post data
-// assume have file /this/that/inbetween.you
-// basename returns inbetween.you
-$targetPath = $ourDir. basename($_FILES["fileUpName"]["name"]);
-
-// get our file type ext
-$fileExt = pathinfo($targetPath,PATHINFO_EXTENSION);
-
-// check if restricted file type is uploaded
-// this case checks for .jpg
-if($fileExt != "jpg"){
-    # do whatever
-}
-
-// restrict file size roughly a  1 MB
-if($_FILES["fileUpName"]["size"] > 1024000){
-    // error file size to big
-}
+     </form><br><br>';
 
 
-// check for existing file name
-if (file_exists($targetPath)) {
-    //error file already exists
-}
-
-// one to keep in mind --
-// exist a few obscure file checking functions
-// ie: getimagesize()
+////////// ----------- END CODE   ----------- \\\\\\\\\\
+///
+///
+///
+///
 
 
-// once the file passes checks
-// to copy the physical file to drive
-move_uploaded_file($_FILES["fileUpName"]["name"], $targetPath);
+    // end example
+    echo '</p></div>';
 
-// storing a file in this manner is not best practice
-// storing a using a direct file name can be a dangerous
-// security vulnerability.
-
-*/
-
-echo '<br><br></p></div>';
-
-// this will halt the script if fnf
-// require "user.php"
-//
-// this will continue scipt if fnf
-// include "user.php"
-
-// end html code section
-
-echo '</p>';
-
-echo '<h4> An important part of including a file is the directory its in! </h4>
-                <p class="p2">Assume a file exists called user.php <br>
-                and we want to include this file as before except <br>
-                this time the file is located in a different folder than<br>
-                the working directory of the current php file.
+    echo '<p class="p2"> The next step is deals with the server side handling of the uploaded file.</p>
+                <h4> The Submitted file is passed via post to the server: </h4>
+                <br>
+                <p class="p4">
+                When a file is past to the php server via a form it first looks for the php file<br>
+                selected as the <i>action</i> atribute of the form tag.<br>
                 </p>
-                <p class="p2">When working with a file it is important to know<br>
-                 the files location. Some limitations do apply but for the most<br>
-                 part php uses linux file structure rules.</p>
-                <p class="p2">
-                 Some tips:<br>
-                 ./filename.php - will look in the current working directory<br>
-                 ../anotherFile.php - checks for file in a the parent dir<br>
-                 ../folder1/filename.php - file is in a folder located in the parent dir
-                 <br></p>';
+                <h4>The submitted file is then stored in the local web server as an object: </h4>
+                <p class="p5">
+                <var>$_FILES[]</var> is a server variable or object which will contain the file passed<br>
+                via the form submission.<br>
+                A common mistake is to improperly specify the file location in the forms<br>
+                <i>action=""</i> atribute, which will cause the post to fail and the<br>
+                resulting upload with fail.<br>
+                </p>';
 
 
-echo "</div><div>
+// end example html code section
+
+echo "<br></div><div>
         <button class='bleft' id='bnext'>Next</button>
         <button class='btuts' id='btuts'>Tutorial Index</button>
         <button class='brght' id='blast'>Last</button>
@@ -221,7 +196,7 @@ echo "<script type='text/javascript'>
 
         document.getElementById('bnext').onclick = function(){
 
-            window.location.assign('http://furttech.vedev.space/php/part1.php');
+            window.location.assign('http://furttech.vedev.space/php/part15.php');
         }
         
         document.getElementById('btuts').onclick = function(){
