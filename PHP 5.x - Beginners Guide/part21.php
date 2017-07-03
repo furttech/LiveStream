@@ -119,6 +119,156 @@ echo '<div style="background: #f1f1f1;">
 ////////// ----------- CLASSES : CODE   ----------- \\\\\\\\\\
 
 
+class dog{
+
+    private breed;
+    private color;
+    private age;
+    private sex;
+    private sound = "woof";
+
+    function __construct($breed,$color,$age,$sex){
+
+        $this->breed = $breed;
+        $this->color = $color;
+        $this->age = $age;
+        $this->sex = $sex;
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---- classes and oop in php ---- //
+
+$bob = new BobRoss(10, 'super', 100, 'mountain range');
+
+/**
+ * class bob ross
+ */
+class BobRoss
+{
+
+    private $afroSize;
+    private $howHappy;
+    private $numTrees;
+    private $paintSubject;
+
+    function __construct($afroSize, $howHappy, $numTrees, $paintSubject)
+    {
+        $this->afroSize = $afroSize;
+        $this->howHappy = $howHappy;
+        $this->numTrees = $numTrees;
+        $this->paintSubject = $paintSubject;
+    }
+
+    private function colorSelector($colorId)
+    {
+
+        $colors = new array("Titanium White", "Clover Green", "Seafoam Gold");
+
+    return $colors[$colorId];
+    }
+
+    private function strokeSelector()
+    {
+
+        $val = random_int(0, 10);
+        $strokeColor = $this->colorSelector($val);
+
+
+    }
+
+    public function setHappyLvl($lvl)
+    {
+        $this->howHappy = $lvl;
+    }
+
+    public function getHappyLvl()
+    {
+        return $this->howHappy;
+    }
+
+    public function getAfroSize()
+    {
+        return $this->afroSize;
+    }
+
+    public function getCurrentStroke()
+    {
+
+        return $this->strokeSelector();
+
+    }
+
+}
+
+/**
+ *
+ */
+class Painting
+{
+
+    private $canvas;
+    private $maxX;
+    private $maxY;
+
+    function __construct($canvasSizeX, $canvasSizeY)
+    {
+
+        $this->$canvasSizeX = $canvasSizeX;
+        $this->$canvasSizeY = $canvasSizeY;
+        $this->canvas = new array();
+    }
+
+    private function checkX($dem)
+    {
+        if ($dem < $maxX) {
+            return 1;
+        }
+        return 0
+    }
+
+    private function checkY($dem)
+    {
+        if ($dem < $maxY) {
+            return 1;
+        }
+        return 0
+    }
+
+    public function paint($object, $posX, $posY)
+    {
+
+        if (($this->checkX($posX) == 1) && ($this->checkY($posY) == 1)) {
+
+
+        } else {
+            // handle error
+        }
+
+
+    }
+
+
+}
+
+
 ////////// ----------- END CODE   ----------- \\\\\\\\\\
 ///
 ///

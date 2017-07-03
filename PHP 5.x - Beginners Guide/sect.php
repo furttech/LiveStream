@@ -86,14 +86,16 @@ echo "<!DOCTYPE html>
 
 echo "<header><h1 class='pageHead'>PHP - The Basics :: An Overview of Syntax and Technique</h1></header>";
 
-echo "<br><br><div class='dpart'><table class='part'>";
+echo "<h4 class='p3'><a href='https://github.com/furttech/LiveStream/tree/master/PHP%205.x%20-%20Beginners%20Guide'>
+        Git the Code Here!</a></h4>
+        <div class='dpart'><table class='part'>";
 
     $pages = array("Some Basics",
         "Some Variables",
         "Arrays",
         "More Arrays",
         "Functions",
-        "Varible/Function Scope",
+        "Variable/Function Scope",
         "Decision Structures",
         "Switch Statements",
         "Loops - While / For",
