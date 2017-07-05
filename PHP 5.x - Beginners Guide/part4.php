@@ -96,15 +96,15 @@
     $snake1['venom']='danger';
     $snake1['length']=8;
 
-    // accessing array by associative refrence
+    // accessing array by associative reference
     echo "Accessing the array with 'type' index key: ".$snake1['type'];
     
     // associative type using object type assignment
     $snake2 = array ('one'=>1,'two'=>2,'three'=>3,'four'=>"four");
     
     // this works in php 5.4 and up
-    // basic arrau using bracketed notation
-    // $basicArr2 = [] 'one'=>1,'two'=>2,'3'=>"three",'four'=>"four"];
+    // basic array using bracketed notation
+    // $basicArr2 = ['one'=>1,'two'=>2,'3'=>"three",'four'=>"four"];
     // echo "Assigning by array = [ 'key' => 'value'] index 'two' equals: ".$basicArr2['two']."<br><br>"; // outputs one 
 
 
@@ -133,37 +133,39 @@
 ///
 ///
 ///
-////////// ----------- MULTI DEMENSIONAL ARRAY CODE   ----------- \\\\\\\\\\
+////////// ----------- MULTI DIMENSIONAL ARRAY CODE   ----------- \\\\\\\\\\
 
     // multi dimensional array
 
     $condiments = array(
+        //pos 0
         'bottles' => array(
             'ketchup' => 100,
             'mustard' => 50,
             'taco sauce'=> 10,
             'hot sauce' => 1,
             'bbq sauce' => 15
-            ),
+        ),
+        // pos 1
         'packets' => array(
-             'mayo' => 500,
-             'ketchup' => 1000,
-             'mustard' => 500,
-             'relish' => 200,
-             'taco' => 200,
-             'bbq' => 100,
-             'hot sauce' =>500
-            ),
+            'mayo' => 500,
+            'ketchup' => 1000,
+            'mustard' => 500,
+            'relish' => 200,
+            'taco' => 200,
+            'bbq' => 100,
+            'hot sauce' =>500
+        ),
         'tubs' => array(
             'ketchup' => 10,
             'mustard' => 8,
             'mayo' => 5
-            )
-    ); 
+        )
+    );
 
-    echo 'Outputting values from the multidimensional array is as simple as normal arrays
+echo 'Outputting values from the multidimensional array is as simple as normal arrays
         <br> One can simply access via associative index name
-        <br><br>"$arrname["val1"]["val2"]"'; 
+        <br><br>"$arrname["val1"]["val2"]"';
 
     // use assigned name instead of index
     echo "<br><br>ie: We can find out how many tubs of ketchup = ".$condiments['tubs']['ketchup']; //outputs 10

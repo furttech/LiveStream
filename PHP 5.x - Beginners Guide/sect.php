@@ -65,6 +65,11 @@
 
     }
 
+    th {
+        border-collapse: collapse;
+        border-bottom: 1px solid #000;
+    }
+
     div.dpart{
         display: block;
         position: inherit;
@@ -72,6 +77,9 @@
         text-align: center;
         border: 1px solid green;
         padding: 5px;
+    }
+    a{
+        text-decoration: none;
     }
 
 </style><?php
@@ -111,6 +119,15 @@ echo "<h4 class='p3'><a href='https://github.com/furttech/LiveStream/tree/master
         "Exception Handling",
         "Using MySql",
         "Using Classes");
+    
+    $videoLinks = array("watch?v=7c4G3hJHE-k",
+                        "watch?v=0IBcB2XxdAg");
+
+        echo '<tr>
+                <th>Sections</th>
+                <th>Title</th>
+                <th>YouTube</th>
+            </tr>';
 
     $index = 1;
     foreach($pages as $value){
@@ -118,6 +135,7 @@ echo "<h4 class='p3'><a href='https://github.com/furttech/LiveStream/tree/master
         echo '<tr>
                     <td><a href="http://furttech.vedev.space/php/part'.$index.'.php">Part '.$index.':</a></td>
                     <td><label>'.$value.'</label></td>
+                    <td><a class="fa fa-youtube-play" href="https://www.youtube.com/'.$videoLinks[$index-1].'"></a></td>
              </tr>';
 
         $index++;
@@ -133,8 +151,10 @@ echo "</div><div>
         <button class='brght' id='blast'>Last</button>
     </div></body>";
 
+
 // java script for nav footer
-echo "<script type='text/javascript'>
+echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+      <script type='text/javascript'>
 
         document.getElementById('bnext').onclick = function(){
 

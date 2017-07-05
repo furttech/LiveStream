@@ -80,7 +80,7 @@
 ///
 ///
 ///
-////////// ----------- ECHO JAVA EXAMPLE CODE   ----------- \\\\\\\\\\
+////////// ----------- ECHO JS EXAMPLE CODE   ----------- \\\\\\\\\\
 
     // using echo to pass js back to the client is also possible
 
@@ -95,7 +95,7 @@
 
     </script>";
 
-////////// ----------- END : VARIBLE CODE   ----------- \\\\\\\\\\
+////////// ----------- END : JS CODE   ----------- \\\\\\\\\\
 ///
 ///
 ///

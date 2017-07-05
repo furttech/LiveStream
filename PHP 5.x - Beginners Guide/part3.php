@@ -130,7 +130,7 @@
     $anotherBasicArray[2] = "nachos with meat!";
 
     // access array by index
-    // here you see the output from both initalization methods
+    // here you see the output from both initialization methods
     echo "<p>Assigning by vall = array() index 2 equals: ".$basicArr[2]."<br><br>";  // outputs '3'
     echo "Assigning by index: ".$anotherBasicArray[2]."<br><br>"; // outputs "nachos with meat!"
     echo "Notice Both values are both easily retrived by index<br></p><br><br>";
